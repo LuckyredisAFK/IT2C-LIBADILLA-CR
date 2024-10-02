@@ -7,8 +7,6 @@ public class CarRental {
     public void addStudents(){
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        System.out.print("ID: ");
-        String id = sc.next();
         System.out.print("Car Brand: ");
         String fname = sc.next();
         System.out.print("Car Model: ");
@@ -25,10 +23,10 @@ public class CarRental {
         String rcp = sc.next();
         
 
-        String sql = "INSERT INTO tbl_cars (c_id, c_brand, c_model, c_year, c_fueltype,c_condition, c_availability, c_rentalcostperday) VALUES (?,?,?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO tbl_cars (c_brand, c_model, c_year, c_fueltype,c_condition, c_availability, c_rentalcostperday) VALUES (?,?, ?, ?, ?, ?,?)";
 
 
-        conf.addRecord(sql,id , fname, lname, email, status,condition, avail,rcp);
+        conf.addRecord(sql,fname, lname, email, status,condition, avail,rcp);
 
 
     }
@@ -60,4 +58,5 @@ public class CarRental {
     } while (response.equals("yes"));
 
     System.out.println("Thank you, See you soon!");
+}
 }
