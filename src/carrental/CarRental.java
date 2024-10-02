@@ -7,24 +7,28 @@ public class CarRental {
     public void addStudents(){
         Scanner sc = new Scanner(System.in);
         config conf = new config();
-        System.out.print("ID ");
+        System.out.print("ID: ");
         String id = sc.next();
-        System.out.print("Car Brand ");
+        System.out.print("Car Brand: ");
         String fname = sc.next();
-        System.out.print("Car Model ");
+        System.out.print("Car Model: ");
         String lname = sc.next();
-        System.out.print("Car Year ");
+        System.out.print("Car Year: ");
         String email = sc.next();
-        System.out.print("Fuel Type ");
+        System.out.print("Fuel Type: ");
         String status = sc.next();
+        System.out.print("Condition: ");
+        String condition = sc.next();
         System.out.print("Availability: ");
         String avail = sc.next();
+        System.out.print("Rental Cost Perday: ");
+        String rcp = sc.next();
         
 
-        String sql = "INSERT INTO tbl_cars (c_id, c_brand, c_model, c_year, c_fueltype, c_availability) VALUES (?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO tbl_cars (c_id, c_brand, c_model, c_year, c_fueltype,c_condition, c_availability, c_rentalcostperday) VALUES (?,?,?, ?, ?, ?, ?,?)";
 
 
-        conf.addRecord(sql,id , fname, lname, email, status, avail);
+        conf.addRecord(sql,id , fname, lname, email, status,condition, avail,rcp);
 
 
     }
