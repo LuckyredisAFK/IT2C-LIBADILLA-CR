@@ -30,6 +30,47 @@ public class CarRental {
 
 
     }
+    
+    private void viewCars() {
+        String cqry = "SELECT * FROM tbl_cars";
+        String[] votersHeaders = {"ID", "Brand", "Model", "Year", "Fuel Type", "Condition", "Availability", "Rental Cost Perday"};
+        String[] votersColumns = {"c_id", "c_brand", "c_model", "c_year", "c_fueltype", "c_condition", "c_availability", "c_rentalcostperday"};
+        config conf = new config();
+        conf.viewRecords(cqry, votersHeaders, votersColumns);
+    }
+    
+    private void updateCars(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Car ID ");
+        int id = sc.nextInt();
+        
+        System.out.println("Enter the new Condition");
+        String condition = sc.next();
+        
+        System.out.println("Enter the new availability");
+        String availability = sc.next();
+        
+        System.out.println("Enter the new Rental Cost Perday");
+        String rcp = sc.next();
+        
+        String qry = "UPDATE tbl_cars SET c_condition = ?, c_availability = ?, c_rentalcostperday = ? WHERE c_id = ?";
+        
+        config conf = new config();
+        conf.updateRecord(qry, condition, availability, rcp, id);
+    }
+    
+    private void deleteCars(){
+        
+        Scanner sc= new Scanner(System.in);
+        System.out.print("Enter the ID to Delete: ");
+        int id = sc.nextInt();
+        
+        String qry = "DELETE FROM tbl_cars WHERE c_id = ?";
+        
+        config conf = new config();
+        conf.deleteRecord(qry, id);
+    
+    }
 
     
     public static void main(String[] args) {
@@ -45,11 +86,20 @@ public class CarRental {
 
         System.out.println("Enter Action: ");
         int action = sc.nextInt();
+        CarRental demo = new CarRental();
 
         switch (action) {
-            case 1:
-                CarRental demo = new CarRental();
+            case 1:              
                 demo.addStudents();
+                break;
+            case 2:              
+                demo.viewCars();
+                break;
+            case 3:
+                demo.updateCars();
+                break;
+            case 4:
+                demo.deleteCars();
                 break;
         }
 
